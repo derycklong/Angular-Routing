@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MessageService } from './message.service';
@@ -17,7 +17,10 @@ export class MessageComponent {
   constructor(private messageService: MessageService,
               private router: Router) { }
 
-  close(): void {
+  close() {
     // Close the popup.
+    
+    this.messageService.isDisplayed=false
+    this.router.navigate([{outlets: { popup: null }}])
   }
 }
